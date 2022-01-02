@@ -2,8 +2,9 @@ import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import { useContext } from "react";
 import PageThemeContext from "../../utils/PageThemeContext";
+import { Link } from "react-router-dom";
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
     padding:5px 35px;
     color:white;
     text-decoration:none;
@@ -21,6 +22,6 @@ export default function LinkButton(props){
     const target = props.target || null;
     const onClick = props.onClick || null;
     return (
-        <StyledLink href={link} target={target} onClick={onClick} theme={theme}>{value}</StyledLink>
+        <StyledLink to={link} target={target} onClick={onClick} theme={theme}>{value}</StyledLink>
     )
 }

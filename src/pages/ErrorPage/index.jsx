@@ -18,6 +18,7 @@ const StyledErrorPage = styled.div`
       color:${props => colors[props.theme].contrast};
     }
     img{
+      width:100%;
       max-width:600px;
     }
     `;

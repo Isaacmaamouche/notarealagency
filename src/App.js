@@ -1,6 +1,7 @@
 import './App.css';
 import {
   BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -50,22 +51,22 @@ export default function App(){
 
   const [menu, setMenu] = useState(false);
   function ToggleMenu() {
-      document.querySelector('.menuIcon').classList.toggle("change");
-      document.querySelector('ul.menu').classList.toggle('menuhidden');
-      setMenu(!menu);
+    document.querySelector('.menuIcon').classList.toggle('change')
+    document.querySelector('ul.menu').classList.toggle('menuhidden');
+    setMenu(!menu);
     }
 
   function handleMenu(){
-      if(menu) ToggleMenu();
+    document.querySelector('.menuIcon').classList.add("change");
+    if(menu) ToggleMenu();
   }
 
   const [answers, setAnswers] = useState([]);
 
   return (
     <PageThemeContext.Provider value={theme} smh="coucou">
-    {/* <PageThemeContext.Provider value={{theme:theme, switchTheme:switchTheme, ToggleMenu:ToggleMenu, menu:menu, handleMenu:handleMenu }}> */}
       <SurveyContext.Provider value={{answers:answers, setAnswers:setAnswers}} >
-        <Router>
+        <Router basename="/notarealagency">
           <div className="main" onClick={handleMenu}>
             <Header switchTheme={switchTheme} ToggleMenu={ToggleMenu} menu={menu} setMenu={setMenu} />
             <Switch>

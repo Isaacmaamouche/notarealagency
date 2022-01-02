@@ -28,16 +28,16 @@ const StyledUl = styled.ul`
     justify-content: flex-end;
     align-items: center;
     @media (max-width:768px){
+        position: fixed;
+        top: -1rem;
+        right: 0;
+        z-index: 1;
         display:flex;
         flex-direction: column;
         align-items: flex-end;
         justify-content: flex-start;
         padding-top: 4rem;
         background-color: ${props => colors[props.theme].mainBg};
-        position: absolute;
-        top: -1rem;
-        right: 0;
-        z-index: 1;
         height: 100vh;
         transform: translateX(100%);
         transition: 0.3s all ease;
@@ -62,7 +62,6 @@ const StyledLogo = styled.li`
 const GlobalHeaderStyle = createGlobalStyle`
 nav {
     position: relative;
-    overflow-x: clip;
   }
   .menuIcon {
     display: inline-block;
@@ -72,41 +71,41 @@ nav {
     cursor: pointer;
     position: fixed;
     top: 1rem;
-    right: 1rem;
+    right: 0rem;
     z-index: 1;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     &::before {
       content: "";
       position: absolute;
       z-index: -1;
-      top: -9px;
-      right: 11px;
+      top: -5px;
+      right: 8px;
       background-color: #5843e4;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
     }
   }
 
   .bar1,.bar2,.bar3 {
     z-index: 1;
-    width: 28px;
-    height: 3px;
+    width: 15px;
+    height: 2px;
     background-color: white;
-    margin: 6px 0;
+    margin: 3px 0px;
     transition: 0.3s;
     pointer-events: none;
   }
 
   .change .bar1 {
-    transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-3px, 3px);
   }
   .change .bar2 {
     opacity: 0;
   }
   .change .bar3 {
-    transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-4px, -4px);
   }
   `;
 
@@ -115,8 +114,8 @@ export default function Header(props){
     const theme = useContext(PageThemeContext);
     return (
         <>
-        <nav>
-            <StyledUl className={props.menu===true? `menu menuhidden` : `menu`} theme={theme}  onClick={props.handleMenu}>
+        <nav onClick={props.handleMenu}>
+            <StyledUl className={props.menu===true? `menu menuhidden` : `menu`} theme={theme} >
                 <StyledLogo>
                     <Link to='/' ><img src={theme === 'light' ? LightLogo : DarkLogo} alt="logo Shiny" /></Link>
                 </StyledLogo>

@@ -6,6 +6,9 @@ import PageThemeContext from "../../utils/PageThemeContext";
 import Spacer from "../../components/Spacer";
 import HomeVisual from '../../assets/home-illustration.svg';
 
+import LightLogo from '../../assets/light-logo.png';
+import DarkLogo from '../../assets/dark-logo.png';
+
 const StyledHome = styled.div`
   display:grid;
   gap: 1rem;
@@ -44,8 +47,19 @@ const StyledHome = styled.div`
       grid-row: 2;
     }
     div:last-child{
-      grid-column:2/6;
+      grid-column:3/5;
       grid-row: 1;
+    }
+  }
+`;
+
+const MobileLogo = styled.div`
+  display:none;
+  @media (max-width:768px){
+    display:block;
+    img{
+      display:block;
+      margin:auto;
     }
   }
 `;
@@ -53,7 +67,12 @@ const StyledHome = styled.div`
 export default function Home() {
   const theme = useContext(PageThemeContext);
     return (
-      <><Spacer /><StyledHome theme={theme}>
+      <><Spacer />
+      <MobileLogo>
+      <img src={theme === 'light' ? LightLogo : DarkLogo} alt="logo Shiny" />
+      <Spacer />
+      </MobileLogo>
+      <StyledHome theme={theme}>
         <div>
           <h1>
             Repérez vos besoins,<br />

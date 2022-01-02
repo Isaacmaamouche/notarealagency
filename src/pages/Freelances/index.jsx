@@ -2,12 +2,10 @@ import styled from 'styled-components';
 import Card from '../../components/Card';
 import colors from '../../utils/style/colors';
 import PageThemeContext from '../../utils/PageThemeContext';
-import SurveyContext from '../../utils/SurveyContext';
 import Spacer from '../../components/Spacer'
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import LoadingAnimation from '../../utils/Loader';
 import { useFetch } from '../../utils/hooks/useFetch';
-import freelanceProfiles from '../../utils/freelances.js';
 
     const CardsContainer = styled.div`
     margin: 0 3rem;
@@ -36,7 +34,7 @@ import freelanceProfiles from '../../utils/freelances.js';
 
 function Freelances() {
     const theme = useContext(PageThemeContext);
-    const { data, isDataLoading, error } = useFetch(`http://localhost:8000/freelances`);
+    const { data, isDataLoading, error } = useFetch(`/freelances`);
     const {freelancersList} = data;
 
     return (

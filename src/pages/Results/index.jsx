@@ -20,6 +20,7 @@ const StyledResultPage = styled.div`
     .jobTitle, h2 span{
       color:${props => colors[props.theme].primary};
       margin-top:0.5rem;
+      text-transform: capitalize;
   }
   p{
       font-size:1rem;
@@ -29,12 +30,14 @@ const StyledResultPage = styled.div`
   h2{
       color:${props => colors[props.theme].contrast};
       text-align:center;
+      
   }
   h2,p {
       width:clamp(600px, 50%, 800px);
       @media (max-width:768px){
           width:unset;
           padding:0 1rem;
+          align-self: flex-start;
       }
   }
   h3{
@@ -60,7 +63,7 @@ function ResultPage() {
   };
 
   if(answers)FormatAnswers(answers);
-  const { data, isDataLoading, error } = useFetch(`http://localhost:8000/results?${queryParams}`);
+  const { data, isDataLoading, error } = useFetch(`/results?${queryParams}`);
   const {resultsData} = data;
 
   let noNeeds = false;
@@ -72,12 +75,13 @@ function ResultPage() {
   } 
   // console.log('answers',answers);
   // console.log('noNeeds',noNeeds);
-  // console.log('queryParams', queryParams);
+  console.log('queryParams', queryParams);
   // console.log('results',resultsData);
 
     return (
       <><Spacer />
         <StyledResultPage theme={theme}>
+        <Spacer />
         {!noNeeds && isDataLoading ? 
                 (<LoadingAnimation />) 
                 :

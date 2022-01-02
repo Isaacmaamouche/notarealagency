@@ -10,6 +10,7 @@ import { useFetch } from '../../utils/hooks/useFetch';
 
 const StyledSurvey = styled.div`
     display:flex;
+    padding: 1rem;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
@@ -23,7 +24,7 @@ const StyledSurvey = styled.div`
             content:'';
             width:100%;
             height:1px;
-            background:#5843E4;
+            background:${colors.light.primary};
             position:absolute;
             bottom:0;
             left:0;
@@ -31,18 +32,18 @@ const StyledSurvey = styled.div`
     }
     `;
     
-const StyledSurveyLink = styled.div`
-    text-align:center;
-    margin-top:3rem;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
+// const StyledSurveyLink = styled.div`
+//     text-align:center;
+//     margin-top:3rem;
+//     display:flex;
+//     flex-direction: row;
+//     justify-content: space-evenly;
+//     width: 100%;
     
-    a:visited {
-        color: inherit;
-    }
-    `;
+//     a:visited {
+//         color: inherit;
+//     }
+//     `;
 
 const StyledSurveyAnswer = styled.div`
     display: grid;
@@ -56,7 +57,13 @@ const StyledSurveyAnswer = styled.div`
         margin:3rem 1rem;
         transition:200ms all ease;
         &:hover{
-            outline: 2px solid #5843E4;
+            box-shadow: 0 0 0 2px ${colors.light.primary};
+            @media (hover:none){
+                box-shadow: none;
+            }
+        }
+        &:focus, &:focus-visible {
+            outline: transparent;
         }
     }
     @media (max-width:768px){
@@ -71,7 +78,7 @@ const StyledSurveyAnswer = styled.div`
 
 export default function Survey() {
     const theme = useContext(PageThemeContext);
-    const {isDataLoading, data, error} = useFetch('http://localhost:8000/survey');
+    const {isDataLoading, data, error} = useFetch('/survey');
     const {surveyData} = data;
     let {questionNumber} = useParams();
 

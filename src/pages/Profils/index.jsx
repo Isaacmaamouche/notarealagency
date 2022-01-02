@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import colors from '../../utils/style/colors';
 import PageThemeContext from '../../utils/PageThemeContext';
 import Spacer from '../../components/Spacer';
-import freelanceProfiles from '../../utils/freelances';
 import LinkButton from '../../components/LinkButton';
 import { useFetch } from '../../utils/hooks/useFetch';
 import LoadingAnimation from '../../utils/Loader';
@@ -65,6 +64,9 @@ const StyledProfilPage = styled.div`
         border-radius:5px;
         border:1px solid ${props => colors[props.theme].contrast};
         margin: 0 5px 0px 0px;
+        display: inline-block;
+        white-space: nowrap;
+
     }
     .status{
         font-size:0.5rem;
@@ -107,7 +109,7 @@ export default function Profils(){
     const {id} = useParams();
     const theme = useContext(PageThemeContext);
    
-    const { data, isDataLoading, error } = useFetch(`http://localhost:8000/freelance?id=${id}`);
+    const { data, isDataLoading, error } = useFetch(`/freelance?id=${id}`);
     const {freelanceData} = data;
 
     return(
