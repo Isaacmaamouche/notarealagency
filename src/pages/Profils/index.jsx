@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../utils/style/colors';
-import PageThemeContext from '../../utils/PageThemeContext';
+import {PageThemeContext} from '../../utils/PageThemeContext';
 import Spacer from '../../components/Spacer';
 import LinkButton from '../../components/LinkButton';
 import { useFetch } from '../../utils/hooks/useFetch';
@@ -107,7 +107,7 @@ const StyledProfilPage = styled.div`
 
 export default function Profils(){
     const {id} = useParams();
-    const theme = useContext(PageThemeContext);
+    const {theme} = useContext(PageThemeContext);
    
     const { data, isDataLoading, error } = useFetch(`/freelance?id=${id}`);
     const {freelanceData} = data;

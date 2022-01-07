@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
-import PageThemeContext from "../../utils/PageThemeContext";
+import {PageThemeContext} from "../../utils/PageThemeContext";
 import SurveyContext from "../../utils/SurveyContext";
 import { useContext } from "react";
 import Spacer from "../../components/Spacer";
@@ -49,8 +49,12 @@ const StyledResultPage = styled.div`
   }
   `;
 
+  export function formatJobList(title, index) {
+    return ((index===0?'':', ') + title);
+}
+
 function ResultPage() {
-  const theme = useContext(PageThemeContext);
+  const {theme} = useContext(PageThemeContext);
   const {answers} = useContext(SurveyContext);
   let queryParams = '';
   function FormatAnswers(answers){
@@ -75,7 +79,7 @@ function ResultPage() {
   } 
   // console.log('answers',answers);
   // console.log('noNeeds',noNeeds);
-  console.log('queryParams', queryParams);
+  // console.log('queryParams', queryParams);
   // console.log('results',resultsData);
 
     return (
@@ -89,7 +93,10 @@ function ResultPage() {
                 {error && <p>Oups.. Une erreur s'est produite.</p>}
                 {!error && !noNeeds && resultsData &&
                 <>
-                <h2>Les compétences dont vous avez besoin : {resultsData.map((obj, index)=>{return <span key={'jobSpan'+index}>{(index===0?'':', ') + obj.title}</span>})} </h2>
+                <h2>Les compétences dont vous avez besoin : 
+                  {/* {resultsData.map((obj, index)=>{return <span key={'jobSpan'+index}>{(index===0?'':', ') + obj.title}</span> */}
+                  {resultsData.map((obj, index)=>{return <span key={'jobSpan'+index}>{formatJobList(obj.title, index)}</span>})}
+                </h2>
                 <Spacer/>
                 <LinkButton value="Découvrez nos profils" link="/freelances" />
                 <Spacer/>

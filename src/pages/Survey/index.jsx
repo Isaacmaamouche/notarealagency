@@ -2,7 +2,7 @@ import React, { useContext} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../utils/style/colors';
-import PageThemeContext from '../../utils/PageThemeContext';
+import {PageThemeContext} from '../../utils/PageThemeContext';
 import SurveyContext from '../../utils/SurveyContext';
 import Spacer from '../../components/Spacer';
 import LoadingAnimation from '../../utils/Loader';
@@ -77,7 +77,7 @@ const StyledSurveyAnswer = styled.div`
  
 
 export default function Survey() {
-    const theme = useContext(PageThemeContext);
+    const {theme} = useContext(PageThemeContext);
     const {isDataLoading, data, error} = useFetch('/survey');
     const {surveyData} = data;
     let {questionNumber} = useParams();

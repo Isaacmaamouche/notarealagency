@@ -4,7 +4,7 @@ import {createGlobalStyle} from "styled-components";
 import colors from "../../utils/style/colors";
 import LinkButton from "../LinkButton";
 import { useContext } from "react";
-import PageThemeContext from '../../utils/PageThemeContext';
+import {PageThemeContext} from '../../utils/PageThemeContext';
 import LightLogo from '../../assets/light-logo.png';
 import DarkLogo from '../../assets/dark-logo.png';
 
@@ -64,14 +64,16 @@ nav {
     position: relative;
   }
   .menuIcon {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     @media (min-width: 769px) {
       display: none;
     }
     cursor: pointer;
     position: fixed;
-    top: 1rem;
-    right: 0rem;
+    top: 0.5rem;
+    right: 0.5rem;
     z-index: 1;
     width: 30px;
     height: 30px;
@@ -79,12 +81,14 @@ nav {
       content: "";
       position: absolute;
       z-index: -1;
-      top: -5px;
-      right: 8px;
+      top: 50%;
+      left: 50%;
       background-color: #5843e4;
       border-radius: 50%;
       width: 30px;
       height: 30px;
+      transform: translate(-50%, -50%);
+
     }
   }
 
@@ -93,29 +97,30 @@ nav {
     width: 15px;
     height: 2px;
     background-color: white;
-    margin: 3px 0px;
+    margin: 2px auto;
     transition: 0.3s;
     pointer-events: none;
   }
 
   .change .bar1 {
-    transform: rotate(-45deg) translate(-3px, 3px);
+    transform: rotate(-45deg) translate(-4px, 4px);
   }
   .change .bar2 {
     opacity: 0;
   }
   .change .bar3 {
-    transform: rotate(45deg) translate(-4px, -4px);
+    transform: rotate(45deg) translate(-4px, -5px);
   }
   `;
 
 
 export default function Header(props){
-    const theme = useContext(PageThemeContext);
+    const {theme, switchTheme} = useContext(PageThemeContext);
+    
     return (
         <>
-        <nav onClick={props.handleMenu}>
-            <StyledUl className={props.menu===true? `menu menuhidden` : `menu`} theme={theme} >
+        <nav>
+            <StyledUl className={props.menu===true? `menu menuhidden` : `menu`} theme={theme}  onClick={props.handleMenu}>
                 <StyledLogo>
                     <Link to='/' ><img src={theme === 'light' ? LightLogo : DarkLogo} alt="logo Shiny" /></Link>
                 </StyledLogo>
@@ -129,7 +134,9 @@ export default function Header(props){
                     <LinkButton value="Faites le test" link="/survey" />
                 </li>
                 <li>
-                    <StyledLink to="#" className="themeSwitcher" theme={theme} onClick={props.switchTheme}>🌞</StyledLink>
+                    <StyledLink to="#" theme={theme} onClick={switchTheme}>
+                        {theme==='light'?'🌙':'🌞'}
+                    </StyledLink>
                 </li>
             </StyledUl>
         </nav>

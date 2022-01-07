@@ -2,7 +2,7 @@ import styled from "styled-components";
 import colors from "../../utils/style/colors";
 import LinkButton from '../../components/LinkButton';
 import { useContext } from "react";
-import PageThemeContext from "../../utils/PageThemeContext";
+import {PageThemeContext} from "../../utils/PageThemeContext";
 import Spacer from "../../components/Spacer";
 import HomeVisual from '../../assets/home-illustration.svg';
 
@@ -64,8 +64,13 @@ const MobileLogo = styled.div`
   }
 `;
 
+export function sum(a, b){
+  return a+ b
+};
+
 export default function Home() {
-  const theme = useContext(PageThemeContext);
+
+  const {theme} = useContext(PageThemeContext);
     return (
       <><Spacer />
       <MobileLogo>

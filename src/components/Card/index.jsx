@@ -5,7 +5,7 @@ import colors from "../../utils/style/colors";
 
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import PageThemeContext from '../../utils/PageThemeContext';
+import {PageThemeContext} from '../../utils/PageThemeContext';
 
 import DefaultPicture from '../../assets/profile.png';
 
@@ -47,10 +47,10 @@ const CardTitle = styled.span`
 
 
 function Card({ label, title, picture, id }) {    
-    const theme = useContext(PageThemeContext);
+    const {theme} = useContext(PageThemeContext);
     return (
 
-        <Link to={`/profils/${id}`}>
+        <Link to={`/profils/${id}`} data-id={label+`-`+id}>
             <CardElement theme={theme}>
                 <CardLabel theme={theme}>{label}</CardLabel>
                 <CardImage src={picture} alt="freelance"/>

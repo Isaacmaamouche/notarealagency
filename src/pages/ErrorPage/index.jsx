@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
-import PageThemeContext from "../../utils/PageThemeContext";
+import {PageThemeContext} from "../../utils/PageThemeContext";
 import { useContext } from "react";
 import Spacer from "../../components/Spacer";
 
@@ -24,7 +24,7 @@ const StyledErrorPage = styled.div`
     `;
 
 function ErrorPage() {
-  const theme=useContext(PageThemeContext);
+  const {theme} = useContext(PageThemeContext);
     return (
       <><Spacer />
         <StyledErrorPage theme={theme}>

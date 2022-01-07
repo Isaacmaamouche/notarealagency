@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Card from '../../components/Card';
 import colors from '../../utils/style/colors';
-import PageThemeContext from '../../utils/PageThemeContext';
+import {PageThemeContext} from '../../utils/PageThemeContext';
 import Spacer from '../../components/Spacer'
 import { useContext } from 'react';
 import LoadingAnimation from '../../utils/Loader';
@@ -33,7 +33,7 @@ import { useFetch } from '../../utils/hooks/useFetch';
 `;
 
 function Freelances() {
-    const theme = useContext(PageThemeContext);
+    const {theme} = useContext(PageThemeContext);
     const { data, isDataLoading, error } = useFetch(`/freelances`);
     const {freelancersList} = data;
 

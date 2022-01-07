@@ -1,3 +1,20 @@
+Project developed to learn React Route and Styled Components.
+
+The design is based on this Figma :
+
+https://www.figma.com/file/KlrToaA7Dj1Sm0opq37ICg/React-interm%C3%A9diaire?node-id=2%3A144
+
+Provided by **Alexia Toulmet in her open classroom course:**
+https://openclassrooms.com/fr/courses/7150606-creez-une-application-react-complete
+The color theme is accessible by every component thanks to the React context API.
+
+To host the website on Github pages, the project is using the work of rafgraph to handle Route’s navigation with Link :
+https://github.com/rafgraph/spa-github-pages
+
+The survey, profiles and freelance profile pages are dynamically fetching data with the fetch API from an Express server running on Heroku.
+
+API calls are handled asynchronously by a custom hook that takes an URL as a parameter, uses the useEffect hook and sets a loading animation during the data fetching.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

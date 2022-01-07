@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled, {keyframes} from 'styled-components';
 import colors from './style/colors';
-import PageThemeContext from './PageThemeContext';
+import {PageThemeContext} from './PageThemeContext';
 
 const rotate = keyframes`
     from {
@@ -24,6 +24,6 @@ const Loader = styled.div`
     `;
 
 export default function LoadingAnimation(){
-    const theme = useContext(PageThemeContext);
-    return <Loader theme={theme} />;
+    const {theme} = useContext(PageThemeContext);
+    return <Loader theme={theme} data-testid="loader"/>;
 }
